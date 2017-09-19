@@ -1,0 +1,222 @@
+{
+    "cctv": [
+        {
+            "name": "CCTV-1",
+            "url": "http://gslbserv.itv.cmvideo.cn/z.m3u8?authCode=07110409322147352675&stbId=006001FF0018120000060019F0D49567&Contentid=5068253659616166748&mos=jbjhhzstsl&livemode=1&channel-id=wasusyt"
+        },
+        {
+            "name": "CCTV-2",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226007/index.m3u8"
+        },
+        {
+            "name": "CCTV-3",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226113/index.m3u8"
+        },
+        {
+            "name": "CCTV-4",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226009/index.m3u8"
+        },
+        {
+            "name": "CCTV-5",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226111/index.m3u8"
+        },
+        {
+            "name": "CCTV-5+",
+            "url": "http://61.55.145.199/live/hls/1075.m3u8"
+        },
+        {
+            "name": "CCTV-6",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225548/index.m3u8"
+        },
+        {
+            "name": "CCTV-7",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226011/index.m3u8"
+        },
+        {
+            "name": "CCTV-8",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226109/index.m3u8"
+        },
+        {
+            "name": "CCTV-9",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225572/index.m3u8"
+        },
+        {
+            "name": "CCTV-10",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226013/index.m3u8"
+        },
+        {
+            "name": "CCTV-11",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226015/index.m3u8"
+        },
+        {
+            "name": "CCTV-12",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226019/index.m3u8"
+        },
+        {
+            "name": "CCTV-13",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226021/index.m3u8"
+        },
+        {
+            "name": "CCTV-14",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226023/index.m3u8"
+        },
+        {
+            "name": "CCTV-15",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226025/index.m3u8"
+        }
+    ],
+    "ws": [
+        {
+            "name": "湖南卫视",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225584/index.m3u8"
+        },
+        {
+            "name": "江苏卫视",
+            "url": "http://183.207.249.7/PLTV/2/224/3221225958/index.m3u8"
+        },
+        {
+            "name": "东方卫视",
+            "url": "http://183.207.249.7/PLTV/2/224/3221225904/index.m3u8"
+        },
+        {
+            "name": "浙江卫视",
+            "url": "http://183.207.249.7/PLTV/2/224/3221225999/index.m3u8"
+        },
+        {
+            "name": "北京卫视",
+            "url": "http://183.207.249.7/PLTV/2/224/3221225902/index.m3u8"
+        },
+        {
+            "name": "东南卫视",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225598/index.m3u8"
+        },
+        {
+            "name": "甘肃卫视",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225590/index.m3u8"
+        },
+        {
+            "name": "广东卫视",
+            "url": "http://183.207.249.7/PLTV/2/224/3221225906/index.m3u8"
+        },
+        {
+            "name": "海南卫视",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225585/index.m3u8"
+        },
+        {
+            "name": "河北卫视",
+            "url": "http://183.207.249.7/PLTV/4/224/3221225840/index.m3u8"
+        },
+        {
+            "name": "河南卫视",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225632/index.m3u8"
+        },
+        {
+            "name": "湖北卫视",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225630/index.m3u8"
+        },
+        {
+            "name": "辽宁卫视",
+            "url": "http://183.207.249.7/PLTV/4/224/3221225802/index.m3u8"
+        },
+        {
+            "name": "宁夏卫视",
+            "url": "http://183.207.249.7/PLTV/4/224/3221225842/index.m3u8"
+        },
+        {
+            "name": "陕西卫视",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225626/index.m3u8"
+        },
+        {
+            "name": "山东卫视",
+            "url": "http://183.207.249.7/PLTV/2/224/3221226003/index.m3u8"
+        },
+        {
+            "name": "上海卫视",
+            "url": ""
+        },
+        {
+            "name": "四川卫视",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225570/index.m3u8"
+        },
+        {
+            "name": "天津卫视",
+            "url": "http://183.207.249.7/PLTV/3/224/3221226265/index.m3u8"
+        },
+        {
+            "name": "云南卫视",
+            "url": "http://183.207.249.7/PLTV/3/224/3221225569/index.m3u8"
+        },
+        {
+            "name": "",
+            "url": ""
+        },
+        {
+            "name": "",
+            "url": ""
+        },
+        {
+            "name": "",
+            "url": ""
+        }
+   ],
+   "hk": [
+        {
+            "name": "凤凰卫视中文台",
+            "url": "http://218.207.213.143//PLTV/88888888/224/3221225900/index.m3u8"
+        },
+        {
+            "name": "凤凰卫视资讯台",
+            "url": "http://218.207.213.143//PLTV/88888888/224/3221225901/index.m3u8"
+        },
+        {
+            "name": "TVB翡翠台",
+            "url": ""
+        },
+        {
+            "name": "TVB新闻台",
+            "url": ""
+        },
+        {
+            "name": "TVB明珠台",
+            "url": ""
+        },
+        {
+            "name": "TVB星河频道",
+            "url": ""
+        },
+        {
+            "name": "香港卫视",
+            "url": "http://play.api.pptv.com/m3u8-300366.m3u8"
+        },
+        {
+            "name": "美亚卫视",
+            "url": ""
+        },
+        {
+            "name": "星空卫视",
+            "url": ""
+        },
+        {
+            "name": "阳光卫视",
+            "url": "http://ktv011.cdnak.ds.kylintv.net/nlds/kylin/chann7/as/live/chann7_4.m3u8"
+        },
+        {
+            "name": "澳门卫视",
+            "url": "http://live4.tdm.com.mo:1935/tv/ch3.live/playlist.m3u8"
+        },
+        {
+            "name": "澳亚卫视",
+            "url": "http://live.mastvnet.com/n1rtlHG/500/live.m3u8"
+        },
+        {
+            "name": "莲花卫视",
+            "url": "http://ktv039.cdnak.ds.kylintv.net/nlds/kylin/lotustv/as/live/lotustv_4.m3u8"
+        }
+   ],
+   "tw": [
+        {
+            "name": "",
+            "url": ""
+        }
+    ]
+}
