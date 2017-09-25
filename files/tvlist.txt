@@ -308,27 +308,27 @@
         },
         {
             "name": "东森新闻台",
-            "img": "tw/dongshennews@3x.png",
+            "img": "tw/dongshengxinwen@3x.png",
             "url": ""
         },
         {
             "name": "东森电影台",
-            "img": "tw/dongshenmovi@3x.png",
+            "img": "tw/dongshengMovi@3x.png",
             "url": ""
         },
         {
             "name": "东森洋片台",
-            "img": "tw/dongshenyangpian@3x.png",
+            "img": "tw/dongshengyangpian@3x.png",
             "url": ""
         },
         {
             "name": "东森戏剧台",
-            "img": "tw/dongshenxiju@3x.png",
+            "img": "tw/dongshengxiju@3x.png",
             "url": ""
         },
         {
             "name": "东森幼幼台",
-            "img": "tw/dongshenyouyouy@3x.png",
+            "img": "tw/dongshengyouyou@3x.png",
             "url": ""
         },
         {
