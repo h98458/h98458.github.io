@@ -278,12 +278,12 @@
         },
         {
             "name": "TVBS综合台",
-            "img": "tw/tvbs@3x.png",
+            "img": "tw/tvbszhonghe@3x.png",
             "url": ""
         },
         {
             "name": "TVBS新闻台",
-            "img": "tw/tvbsnews@3x.png",
+            "img": "tw/tvbsNews@3x.png",
             "url": ""
         },
         {
@@ -293,7 +293,7 @@
         },
         {
             "name": "中天新闻台",
-            "img": "tw/zhongtiannews@3x.png",
+            "img": "tw/zhongtianxinwen@3x.png",
             "url": ""
         },
         {
