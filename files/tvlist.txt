@@ -348,7 +348,7 @@
         },
         {
             "name": "三立新闻台",
-            "img": "tw/sanlinews@3x.png",
+            "img": "tw/sanliNews@3x.png",
             "url": ""
         },
         {
