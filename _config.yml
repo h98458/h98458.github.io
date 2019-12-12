@@ -8,7 +8,7 @@ url: "https://h98458.github.io"  # 此处填写你的博客地址
 
 # About/contact
 owner: 
-  name: "忧郁的海风" # 填写息：名字
+  name: "Pic+" # 填写息：名字
   email: h98458@gmail.com # 填写作者信息：邮箱
   bio: "Pic+长截图App的相关动态" # 填写作者信息：博客描述
 
@@ -43,7 +43,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "忧郁的海风" # 你的名字
+      author: "Pic+" # 你的名字
       header-img: "img/green.jpg" # We don't want posts without a header image, that whould mean white on white
 
 # Comments 
