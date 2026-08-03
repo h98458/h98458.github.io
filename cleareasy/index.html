@@ -1,294 +1,476 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clear Easy · AI 智能相册清理</title>
+    <meta name="description" content="清理重复照片、相似照片、模糊照片和大体积视频。所有处理均在本地完成，不上传，不云端，隐私优先。" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+        }
 
-<title>Clear Easy - AI Photo Cleaner</title>
+        body {
+            background: #ffffff;
+            color: #111827;
+            line-height: 1.6;
+        }
 
-<meta name="description"
-content="Clean duplicate photos, similar photos, blurry photos and large videos. All processing happens locally on your device. No uploads. No cloud. Privacy first.">
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;
-}
+        /* 语言切换条 */
+        .lang-bar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            padding: 16px 24px 8px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            font-size: 15px;
+            font-weight: 500;
+            color: #6b7280;
+            padding: 6px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .lang-btn.active {
+            background: #1c1e24;
+            color: white;
+        }
+        .lang-btn:not(.active):hover {
+            background: #f0f2f5;
+        }
 
-body{
-    background:#ffffff;
-    color:#111827;
-    line-height:1.6;
-}
+        /* 内容切换 */
+        .lang-content {
+            display: block;
+        }
+        .lang-content.hidden {
+            display: none;
+        }
 
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:0 24px;
-}
+        /* Hero */
+        .hero {
+            padding: 100px 0 110px;
+            text-align: center;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+        }
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        .hero .sub {
+            font-size: 22px;
+            opacity: 0.92;
+            max-width: 700px;
+            margin: 0 auto 8px;
+        }
+        .hero .sub2 {
+            font-size: 18px;
+            opacity: 0.75;
+            max-width: 640px;
+            margin: 0 auto 32px;
+        }
+        .download-btn {
+            display: inline-block;
+            background: white;
+            color: #2563eb;
+            padding: 16px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transition: 0.2s;
+        }
+        .download-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+        }
 
-.hero{
-    padding:100px 0;
-    text-align:center;
-    background:linear-gradient(135deg,#2563eb,#3b82f6);
-    color:white;
-}
+        /* sections */
+        .section {
+            padding: 90px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            color: #6b7280;
+            font-size: 18px;
+        }
 
-.hero h1{
-    font-size:56px;
-    font-weight:700;
-    margin-bottom:20px;
-}
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
 
-.hero p{
-    font-size:22px;
-    opacity:.9;
-    max-width:700px;
-    margin:auto;
-}
+        .card {
+            background: #f9fafb;
+            border-radius: 20px;
+            padding: 30px 28px;
+            transition: 0.2s;
+            border: 1px solid #f0f2f5;
+        }
+        .card:hover {
+            border-color: #d1d9e6;
+            background: #fafcff;
+        }
+        .card .icon {
+            font-size: 32px;
+            margin-bottom: 6px;
+        }
+        .card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .card p {
+            color: #4b5563;
+            font-size: 15px;
+        }
 
-.download-btn{
-    display:inline-block;
-    margin-top:40px;
-    background:white;
-    color:#2563eb;
-    padding:16px 32px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:600;
-    font-size:18px;
-}
+        /* Privacy 区块 */
+        .privacy {
+            background: #111827;
+            color: white;
+            text-align: center;
+        }
+        .privacy h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .privacy .sub-text {
+            max-width: 640px;
+            margin: 0 auto 24px;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .privacy-grid .item {
+            background: rgba(255,255,255,0.07);
+            padding: 16px 20px;
+            border-radius: 16px;
+            font-size: 16px;
+            backdrop-filter: blur(2px);
+        }
+        .privacy-grid .item strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 2px;
+        }
+        .privacy-grid .item span {
+            opacity: 0.8;
+        }
 
-.section{
-    padding:90px 0;
-}
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 48px 0 32px;
+            color: #6b7280;
+            border-top: 1px solid #f0f2f5;
+            margin-top: 8px;
+        }
+        .footer a {
+            color: #2563eb;
+            text-decoration: none;
+            margin: 0 14px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
 
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title h2{
-    font-size:40px;
-    margin-bottom:12px;
-}
-
-.section-title p{
-    color:#6b7280;
-    font-size:18px;
-}
-
-.features{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:24px;
-}
-
-.card{
-    background:#f9fafb;
-    border-radius:20px;
-    padding:30px;
-}
-
-.card h3{
-    margin-bottom:12px;
-    font-size:22px;
-}
-
-.card p{
-    color:#6b7280;
-}
-
-.privacy{
-    background:#111827;
-    color:white;
-    text-align:center;
-}
-
-.privacy h2{
-    font-size:40px;
-    margin-bottom:20px;
-}
-
-.privacy-list{
-    max-width:800px;
-    margin:auto;
-    font-size:22px;
-    line-height:2;
-}
-
-.footer{
-    text-align:center;
-    padding:40px 0;
-    color:#6b7280;
-}
-
-.footer a{
-    color:#2563eb;
-    text-decoration:none;
-}
-</style>
-
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 38px; }
+            .hero .sub { font-size: 18px; }
+            .section-title h2 { font-size: 30px; }
+            .lang-bar { justify-content: center; padding: 12px 16px 4px; }
+            .privacy-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 70px 0 80px; }
+            .hero h1 { font-size: 30px; }
+            .download-btn { padding: 14px 28px; font-size: 16px; }
+            .privacy-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- 语言切换 -->
+<div class="lang-bar">
+    <button class="lang-btn active" data-lang="zh">中文</button>
+    <button class="lang-btn" data-lang="en">English</button>
+</div>
 
-<section class="hero">
-    <div class="container">
-        <h1>Clear Easy</h1>
+<!-- ============ 中文内容 ============ -->
+<div id="lang-zh" class="lang-content">
 
-        <p>
-            AI-powered photo cleaner that helps you remove duplicate photos,
-            similar photos, blurry photos and large videos.
-        </p>
-
-        <a href="#" class="download-btn">
-            Download on the App Store
-        </a>
-    </div>
-</section>
-
-<!-- FEATURES -->
-
-<section class="section">
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Free Up Storage Instantly</h2>
-            <p>
-                Smart AI scanning helps you reclaim valuable space in seconds.
-            </p>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>Clear Easy</h1>
+            <div class="sub">AI 智能相册清理 · 释放存储空间</div>
+            <div class="sub2">精准识别重复、相似、模糊照片和大体积视频 · 全部本地处理，隐私无忧</div>
+            <a href="#" class="download-btn">App Store 下载</a>
         </div>
+    </section>
 
-        <div class="features">
-
-            <div class="card">
-                <h3>📸 Similar Photos</h3>
-                <p>
-                    Automatically find groups of similar shots and keep only the best one.
-                </p>
+    <!-- 功能 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>瞬间释放存储空间</h2>
+                <p>智能 AI 扫描帮你快速找回宝贵空间</p>
             </div>
-
-            <div class="card">
-                <h3>🗂 Duplicate Photos</h3>
-                <p>
-                    Detect exact duplicates and safely remove unnecessary copies.
-                </p>
+            <div class="features">
+                <div class="card">
+                    <div class="icon">📸</div>
+                    <h3>相似照片</h3>
+                    <p>自动找出连拍或相似照片组，只保留最佳的一张。</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🗂</div>
+                    <h3>重复照片</h3>
+                    <p>精准检测完全相同的照片，安全移除多余副本。</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌫</div>
+                    <h3>模糊照片</h3>
+                    <p>识别模糊、低质量照片，帮你清理不再需要的废片。</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🎬</div>
+                    <h3>大体积视频</h3>
+                    <p>快速找出最占空间的视频文件，轻松管理存储。</p>
+                </div>
+                <div class="card">
+                    <div class="icon">⚡</div>
+                    <h3>智能清理</h3>
+                    <p>AI 自动选出最值得保留和最适合删除的文件。</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🚀</div>
+                    <h3>极速扫描</h3>
+                    <p>优化本地处理，几分钟内分析数千张照片。</p>
+                </div>
             </div>
-
-            <div class="card">
-                <h3>🌫 Blurry Photos</h3>
-                <p>
-                    Identify blurry and low-quality photos you probably don't need.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>🎬 Large Videos</h3>
-                <p>
-                    Quickly find videos consuming the most storage space.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>⚡ Smart Cleanup</h3>
-                <p>
-                    AI automatically selects the best files to keep and the safest files to remove.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>🚀 Fast Scanning</h3>
-                <p>
-                    Analyze thousands of photos in minutes with optimized local processing.
-                </p>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- PRIVACY -->
-
-<section class="section privacy">
-    <div class="container">
-
-        <h2>Your Privacy Comes First</h2>
-
-        <div class="privacy-list">
-
-            ❌ No photo uploads<br>
-            ❌ No cloud processing<br>
-            ❌ No face recognition uploads<br>
-            ❌ No personal content collection<br>
-            ❌ No tracking of your photos<br><br>
-
-            ✅ All photo analysis happens locally on your device<br>
-            ✅ Your photos never leave your phone<br>
-            ✅ Complete control over your data
-
-        </div>
-
-    </div>
-</section>
-
-<!-- WHY -->
-
-<section class="section">
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Why Choose Clear Easy?</h2>
-        </div>
-
-        <div class="features">
-
-            <div class="card">
-                <h3>Privacy-First Design</h3>
-                <p>
-                    Every photo scan is performed locally. Your content remains private.
-                </p>
+    <!-- 隐私承诺 -->
+    <section class="section privacy">
+        <div class="container">
+            <h2>隐私至上 · 本地处理</h2>
+            <div class="sub-text">你的照片、视频 —— 全都在你的设备上完成分析，从未离开。</div>
+            <div class="privacy-grid">
+                <div class="item"><strong>❌ 不上传</strong><span>照片绝不离开你的手机</span></div>
+                <div class="item"><strong>❌ 无云端</strong><span>所有分析均在本地运行</span></div>
+                <div class="item"><strong>❌ 无面部上传</strong><span>不收集面部识别数据</span></div>
+                <div class="item"><strong>✅ 完全控制</strong><span>你决定保留或删除</span></div>
+                <div class="item"><strong>✅ 无跟踪</strong><span>不收集个人内容</span></div>
+                <div class="item"><strong>✅ 本地扫描</strong><span>照片永不外传</span></div>
             </div>
-
-            <div class="card">
-                <h3>Smart AI Technology</h3>
-                <p>
-                    Detect duplicates, similarities, blur and large files with intelligent algorithms.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Easy to Use</h3>
-                <p>
-                    One tap to scan, review and clean your photo library.
-                </p>
-            </div>
-
         </div>
+    </section>
 
-    </div>
-</section>
+    <!-- 为什么选择 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>为什么选择 Clear Easy？</h2>
+            </div>
+            <div class="features">
+                <div class="card">
+                    <h3>🔒 隐私优先设计</h3>
+                    <p>每次扫描都在本地执行，你的内容完全私有。</p>
+                </div>
+                <div class="card">
+                    <h3>🧠 智能 AI 技术</h3>
+                    <p>通过智能算法检测重复、相似、模糊和大文件。</p>
+                </div>
+                <div class="card">
+                    <h3>👍 简单易用</h3>
+                    <p>一键扫描、预览并清理你的相册。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Clear Easy. All Rights Reserved.</p>
+            <br>
+            <a href="PrivacyPolicy.html">隐私政策</a>
+            <a href="TermsOfUse.html">使用条款</a>
+        </div>
+    </footer>
+</div>
 
-<footer class="footer">
-    <div class="container">
+<!-- ============ 英文内容 ============ -->
+<div id="lang-en" class="lang-content hidden">
 
-        <p>
-            © 2026 Clear Easy. All Rights Reserved.
-        </p>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>Clear Easy</h1>
+            <div class="sub">AI Photo Cleaner · Free Up Storage</div>
+            <div class="sub2">Detect duplicate, similar, blurry photos and large videos — all processed locally, privacy first</div>
+            <a href="#" class="download-btn">Download on the App Store</a>
+        </div>
+    </section>
 
-        <br>
+    <!-- FEATURES -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Free Up Storage Instantly</h2>
+                <p>Smart AI scanning helps you reclaim valuable space in seconds</p>
+            </div>
+            <div class="features">
+                <div class="card">
+                    <div class="icon">📸</div>
+                    <h3>Similar Photos</h3>
+                    <p>Automatically find groups of similar shots and keep only the best one.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🗂</div>
+                    <h3>Duplicate Photos</h3>
+                    <p>Detect exact duplicates and safely remove unnecessary copies.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌫</div>
+                    <h3>Blurry Photos</h3>
+                    <p>Identify blurry and low-quality photos you probably don't need.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🎬</div>
+                    <h3>Large Videos</h3>
+                    <p>Quickly find videos consuming the most storage space.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">⚡</div>
+                    <h3>Smart Cleanup</h3>
+                    <p>AI automatically selects the best files to keep and the safest files to remove.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🚀</div>
+                    <h3>Fast Scanning</h3>
+                    <p>Analyze thousands of photos in minutes with optimized local processing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <a href="PrivacyPolicy.html">
-            Privacy Policy
-        </a>
+    <!-- PRIVACY -->
+    <section class="section privacy">
+        <div class="container">
+            <h2>Your Privacy Comes First</h2>
+            <div class="sub-text">Your photos and videos — all analyzed on your device, never leave your phone.</div>
+            <div class="privacy-grid">
+                <div class="item"><strong>❌ No uploads</strong><span>Photos never leave your phone</span></div>
+                <div class="item"><strong>❌ No cloud</strong><span>All analysis runs locally</span></div>
+                <div class="item"><strong>❌ No face uploads</strong><span>No facial recognition data</span></div>
+                <div class="item"><strong>✅ Full control</strong><span>You decide what to keep or delete</span></div>
+                <div class="item"><strong>✅ No tracking</strong><span>No personal content collected</span></div>
+                <div class="item"><strong>✅ Local scanning</strong><span>Your photos stay private</span></div>
+            </div>
+        </div>
+    </section>
 
-    </div>
-</footer>
+    <!-- WHY -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Clear Easy?</h2>
+            </div>
+            <div class="features">
+                <div class="card">
+                    <h3>🔒 Privacy-First Design</h3>
+                    <p>Every photo scan is performed locally. Your content remains private.</p>
+                </div>
+                <div class="card">
+                    <h3>🧠 Smart AI Technology</h3>
+                    <p>Detect duplicates, similarities, blur and large files with intelligent algorithms.</p>
+                </div>
+                <div class="card">
+                    <h3>👍 Easy to Use</h3>
+                    <p>One tap to scan, review and clean your photo library.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Clear Easy. All Rights Reserved.</p>
+            <br>
+            <a href="PrivacyPolicy.html">Privacy Policy</a>
+            <a href="TermsOfUse.html">Terms of Use</a>
+        </div>
+    </footer>
+</div>
+
+<script>
+    (function() {
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const zhContent = document.getElementById('lang-zh');
+        const enContent = document.getElementById('lang-en');
+
+        function setLanguage(lang) {
+            langBtns.forEach(btn => {
+                const isActive = btn.dataset.lang === lang;
+                btn.classList.toggle('active', isActive);
+            });
+            if (lang === 'zh') {
+                zhContent.classList.remove('hidden');
+                enContent.classList.add('hidden');
+            } else {
+                enContent.classList.remove('hidden');
+                zhContent.classList.add('hidden');
+            }
+        }
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                setLanguage(this.dataset.lang);
+            });
+        });
+
+        setLanguage('en');
+    })();
+</script>
 
 </body>
 </html>
